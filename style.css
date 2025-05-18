@@ -1,5 +1,4 @@
   @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Roboto:wght@300;700&display=swap');
-  /* Reset and base */
   * {
     box-sizing: border-box;
   }
@@ -29,7 +28,6 @@ h1 {
   color: transparent;
   animation: zoomGradient 3s ease-in-out infinite;
 }
-
 @keyframes zoomGradient {
   0% {
     transform: scale(1);
@@ -44,15 +42,12 @@ h1 {
     background-position: 0%;
   }
 }
-
-  /* Container holding the zine pages */
   #zine-container {
     max-width: 700px;
     margin: 40px auto;
     padding: 0 20px;
     perspective: 1200px;
   }
-  /* Each page */
   .page {
     background: #222;
     border-radius: 15px;
@@ -78,14 +73,12 @@ h1 {
     transform-style: preserve-3d;
     transform-origin: center top;
   }
-  /* Page heading */
   .page h2 {
     color: #FF6FD8;
     font-size: 2.8rem;
     margin: 12px 0 14px 0;
     user-select: none;
   }
-  /* Page content */
   .page p.description {
     font-size: 1.2rem;
     color: #ddd;
@@ -107,7 +100,6 @@ h1 {
   .page.expanded img {
     animation: floatImage 5s ease-in-out infinite alternate;
   }
-
   @keyframes imageEntrance {
     0% {
       opacity: 0;
@@ -128,8 +120,6 @@ h1 {
       transform: translateY(-12px) rotateZ(2deg) scale(1.07);
     }
   }
-
-  /* More content hidden by default */
   .more-content {
     max-height: 0;
     overflow: hidden;
@@ -145,12 +135,11 @@ h1 {
     opacity: 0;
   }
   .page.expanded .more-content {
-    max-height: 1000px; /* large enough to fit content */
+    max-height: 1000px; 
     padding-top: 12px;
     margin-top: 12px;
     opacity: 1;
   }
-  /* More button */
   .more-btn {
     display: inline-block;
     margin-top: 14px;
@@ -176,7 +165,6 @@ h1 {
     outline: 3px solid #ff6fd8cc;
     transform: scale(1.1);
   }
-  /* Pulse animation for more-btn */
   @keyframes pulse {
     0%, 100% {
       box-shadow: 0 6px 18px rgba(255, 111, 216, 0.6);
@@ -188,8 +176,6 @@ h1 {
   .more-btn:not(:focus):not(:hover) {
     animation: pulse 3s ease-in-out infinite;
   }
-
-  /* Blur effect on not expanded pages */
   #zine-container.blurred .page:not(.expanded) {
     filter: blur(5px) brightness(0.8);
     pointer-events: none;
@@ -197,7 +183,6 @@ h1 {
     transform: scale(0.98);
     transition: filter 0.5s ease, transform 0.5s ease, brightness 0.5s ease;
   }
-  /* Scroll progress bar */
   #progress-bar {
     position: fixed;
     top: 0;
