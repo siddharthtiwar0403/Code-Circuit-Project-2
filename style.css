@@ -1,0 +1,230 @@
+  @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Roboto:wght@300;700&display=swap');
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin:0;
+    background: #111;
+    color: #eee;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+  h1, h2 {
+    font-weight: 700;
+  }
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  user-select: none;
+  background: linear-gradient(to right, #FF6FD8, #8f68ff, #1d5af4, #8f68ff, #FF6FD8);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: zoomGradient 3s ease-in-out infinite;
+}
+
+@keyframes zoomGradient {
+  0% {
+    transform: scale(1);
+    background-position: 0%;
+  }
+  50% {
+    transform: scale(1.08);
+    background-position: 100%;
+  }
+  100% {
+    transform: scale(1);
+    background-position: 0%;
+  }
+}
+
+  /* Container holding the zine pages */
+  #zine-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    perspective: 1200px;
+  }
+  /* Each page */
+  .page {
+    background: #222;
+    border-radius: 15px;
+    padding: 20px 30px 30px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 12px 20px rgba(100, 100, 255, 0.1);
+    opacity: 0;
+    transform: translateY(40px) scale(0.95) rotateX(10deg);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.5s ease;
+    position: relative;
+    will-change: transform, opacity, box-shadow;
+  }
+  .page.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    box-shadow: 0 18px 32px rgba(100, 100, 255, 0.4);
+  }
+  .page.expanded {
+    box-shadow: 0 28px 48px rgba(255, 111, 216, 0.8);
+    transform-style: preserve-3d;
+    transform-origin: center top;
+  }
+  /* Page heading */
+  .page h2 {
+    color: #FF6FD8;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.8rem;
+    margin: 12px 0 14px 0;
+    user-select: none;
+  }
+  /* Page content */
+  .page p.description {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-align: justify;
+  }
+  .page img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(255, 111, 216, 0.3);
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+    display: block;
+    will-change: transform, filter;
+    transform-origin: center center;
+  }
+  .page.visible img {
+    animation: imageEntrance 1s ease forwards;
+  }
+  .page.expanded img {
+    animation: floatImage 5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 8px #ff6fd8aa);
+  }
+
+  @keyframes imageEntrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) rotateZ(-3deg);
+      filter: brightness(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotateZ(0deg);
+      filter: brightness(1);
+    }
+  }
+  @keyframes floatImage {
+    0% {
+      transform: translateY(0) rotateZ(0deg) scale(1.02);
+      filter: drop-shadow(0 0 10px #ff6fd8cc);
+    }
+    100% {
+      transform: translateY(-12px) rotateZ(2deg) scale(1.07);
+      filter: drop-shadow(0 0 15px #ff6fd8ee);
+    }
+  }
+
+  /* More content hidden by default */
+  .more-content {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 1.1rem;
+    color: #ccc;
+    text-align: justify;
+    transition:
+      max-height 0.6s ease,
+      padding 0.4s ease,
+      opacity 0.7s ease;
+    padding: 0 0;
+    margin-top: 0;
+    opacity: 0;
+  }
+  .page.expanded .more-content {
+    max-height: 1000px; /* large enough to fit content */
+    padding-top: 12px;
+    margin-top: 12px;
+    opacity: 1;
+  }
+  /* More button */
+  .more-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 28px;
+    font-weight: 700;
+    font-size: 1rem;
+    background: #FF6FD8;
+    background-image: linear-gradient(45deg, #FF6FD8 0%, #3813C2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(255, 111, 216, 0.6);
+    user-select: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    letter-spacing: 0.05em;
+    outline-offset: 2px;
+    position: relative;
+  }
+  .more-btn:hover, .more-btn:focus {
+    background-image: linear-gradient(45deg, #3813C2 0%, #FF6FD8 100%);
+    box-shadow: 0 8px 22px rgba(56, 19, 194, 0.8);
+    outline: 3px solid #ff6fd8cc;
+    transform: scale(1.1);
+  }
+  /* Pulse animation for more-btn */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 6px 18px rgba(255, 111, 216, 0.6);
+    }
+    50% {
+      box-shadow: 0 10px 28px rgba(255, 111, 216, 0.9);
+    }
+  }
+  .more-btn:not(:focus):not(:hover) {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  /* Blur effect on not expanded pages */
+  #zine-container.blurred .page:not(.expanded) {
+    filter: blur(5px) brightness(0.8);
+    pointer-events: none;
+    user-select: none;
+    transform: scale(0.98);
+    transition: filter 0.5s ease, transform 0.5s ease, brightness 0.5s ease;
+  }
+  /* Scroll progress bar */
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6px;
+    background: linear-gradient(270deg, #FF6FD8, #3813C2, #FF6FD8);
+    background-size: 400% 400%;
+    width: 0%;
+    z-index: 100;
+    transition: width 0.25s ease;
+    animation: progressGlow 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px #ff6fd8aa);
+  }
+  @keyframes progressGlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
