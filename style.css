@@ -7,7 +7,7 @@
     margin:0;
     background: #111;
     color: #eee;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     overflow-x: hidden;
     line-height: 1.5;
   }
@@ -17,7 +17,6 @@
 h1 {
   font-size: 50px;
   font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   margin: 0;
   padding: 20px;
@@ -82,7 +81,6 @@ h1 {
   /* Page heading */
   .page h2 {
     color: #FF6FD8;
-    font-family: 'Amatic SC', cursive;
     font-size: 2.8rem;
     margin: 12px 0 14px 0;
     user-select: none;
@@ -204,7 +202,7 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    height: 6px;
+    height: 8px;
     background: linear-gradient(270deg, #FF6FD8, #3813C2, #FF6FD8);
     background-size: 400% 400%;
     width: 0%;
